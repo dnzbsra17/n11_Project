@@ -2,11 +2,16 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Utilities.GWD;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class LoginStep {
-    DialogContent dc=new DialogContent();
+    DialogContent dc = new DialogContent();
+
     @Given("Navigate to web site")
     public void navigateToNSite() {
         GWD.getDriver().get("https://www.n11.com/");
@@ -15,8 +20,8 @@ public class LoginStep {
     @When("Enter valid username and password")
     public void enterValidUsernameAndPassword() {
         dc.clickFunction(dc.signIn);
-        dc.sendKeysFunction(dc.email,"bughunters2023@hotmail.com");
-        dc.sendKeysFunction(dc.password,"Brd.2023");
+        dc.sendKeysFunction(dc.email, "bughunters2023@hotmail.com");
+        dc.sendKeysFunction(dc.password, "Brd.2023");
         //dc.scroll("500");
 
     }
@@ -31,8 +36,25 @@ public class LoginStep {
 
     @Then("User should login successfully")
     public void userShouldLoginSuccessfully() {
-        Assert.assertTrue(dc.hesabim.isDisplayed(),"aa");
-        dc.verifyContainsTextFunction(dc.hesabim,"MÜ");
+        Assert.assertTrue(dc.account.isDisplayed(), "Login process is fail");
+    }
+
+
+    @When("User enter email as {string}  password  as {string}")
+    public void userEnterEmailAsPasswordAs(String email, String password) {
+        dc.clickFunction(dc.signIn);
+        dc.sendKeysFunction(dc.email,email);
+        dc.sendKeysFunction(dc.password,password);
+
+
+    }
+
+    @Then("User should not login successfully")
+    public void userShouldNotLoginSuccessfully() {
+      for (WebElement e:dc.errorText){
+          if (e.isDisplayed())
+              Assert.assertTrue(e.isDisplayed());
+      }
     }
 
 

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class DialogContent extends Parent{
     public DialogContent() {
         PageFactory.initElements(GWD.getDriver(),this);
@@ -22,8 +24,11 @@ public class DialogContent extends Parent{
     @FindBy(id = "loginButton")
     public WebElement loginButton;
 
-    @FindBy(linkText = "MÜ")
-    public WebElement hesabim;
+    @FindBy(xpath = "//a[@title='Hesabım']")
+    public WebElement account;
+
+    @FindBy(css = "[class='errorText']")
+    public List<WebElement> errorText;
 
 
 }
