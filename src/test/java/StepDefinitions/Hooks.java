@@ -11,10 +11,8 @@ import org.openqa.selenium.TakesScreenshot;
 public class Hooks {
 
 
-    @After  // her senaryodan sonra çalışacak bölüm
+    @After
     public void after(Scenario senaryo){
-        System.out.println("Senaryo bitti");
-
         ExcelUtility.writeExcel("src/test/java/ApachePOI/resource/ScenarioStatus.xlsx",
                 senaryo, GWD.threadBrowserGet());
 
