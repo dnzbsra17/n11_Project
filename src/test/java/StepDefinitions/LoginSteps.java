@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class LoginStep {
+public class LoginSteps {
     DialogContent dc = new DialogContent();
 
     @Given("Navigate to web site")
@@ -19,19 +19,15 @@ public class LoginStep {
 
     @When("Enter valid username and password")
     public void enterValidUsernameAndPassword() {
+        dc.n11Cookies();
         dc.clickFunction(dc.signIn);
         dc.sendKeysFunction(dc.email, "bughunters2023@hotmail.com");
         dc.sendKeysFunction(dc.password, "Brd.2023");
-        //dc.scroll("500");
-
     }
 
     @And("Click on the login button")
     public void clickOnTheLoginButton() {
-
         dc.loginButton.click();
-
-
     }
 
     @Then("User should login successfully")
@@ -42,20 +38,18 @@ public class LoginStep {
 
     @When("User enter email as {string}  password  as {string}")
     public void userEnterEmailAsPasswordAs(String email, String password) {
+        dc.n11Cookies();
         dc.clickFunction(dc.signIn);
-        dc.sendKeysFunction(dc.email,email);
-        dc.sendKeysFunction(dc.password,password);
-
-
+        dc.sendKeysFunction(dc.email, email);
+        dc.sendKeysFunction(dc.password, password);
     }
 
     @Then("User should not login successfully")
     public void userShouldNotLoginSuccessfully() {
-      for (WebElement e:dc.errorText){
-          if (e.isDisplayed())
-              Assert.assertTrue(e.isDisplayed());
-      }
+        for (WebElement e : dc.errorText) {
+            if (e.isDisplayed())
+                Assert.assertTrue(e.isDisplayed());
+        }
     }
-
 
 }

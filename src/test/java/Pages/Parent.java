@@ -79,7 +79,10 @@ public class Parent {
             case "space":
                 r.keyPress(KeyEvent.VK_SPACE);
                 r.keyRelease(KeyEvent.VK_SPACE);
+            case "mousewheel":
+                r.mouseWheel(200);
                 break;
+
         }
     }
 
@@ -103,7 +106,7 @@ public class Parent {
 
     public void scrollToElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].scrollIntoView(false);", element);
     }
 
 
@@ -134,26 +137,23 @@ public class Parent {
         js.executeScript("arguments[0].click();", element);
     }
 
-    public void trendyolCookies() {
+    public void n11Cookies() {
 
-        List<WebElement> cookieXIconList = wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.cssSelector("div[title='Kapat']"), 2));
-        List<WebElement> cookieKabulEtList = wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//button[text()='KABUL ET']"), 2));
+        List<WebElement> cookieCampaignClose = wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//*[text()='Daha Sonra']"), 3));
+        List<WebElement> cookieLocationClose = wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.id("myLocation-close-info"), 2));
 
-        if (cookieXIconList.size() > 0) {
-            WebElement cookieXIcon = GWD.getDriver().findElement(By.cssSelector("div[title='Kapat']"));
-            if (cookieXIcon.isDisplayed()) {
-                clickFunction(cookieXIcon);
-            }
+        if (cookieCampaignClose.size() > 0) {
+            WebElement campaignClose = GWD.getDriver().findElement(By.xpath("//*[text()='Daha Sonra']"));
+            clickFunction(campaignClose);
         }
 
-        if (cookieKabulEtList.size() > 0) {
-            WebElement cookieKabulEt = GWD.getDriver().findElement(By.xpath("//button[text()='KABUL ET']"));
-            robot("esc");
-            clickFunction(cookieKabulEt);
+        if (cookieLocationClose.size() > 0) {
+            WebElement locationClose = GWD.getDriver().findElement(By.id("myLocation-close-info"));
+                clickFunction(locationClose);
         }
     }
 
-    public int RandomGenerator(int max) {
+    public int randomGenerator(int max) {
         return (int) (Math.random() * max);
     }
 
