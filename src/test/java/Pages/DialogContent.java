@@ -7,28 +7,65 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DialogContent extends Parent{
+public class DialogContent extends Parent {
     public DialogContent() {
-        PageFactory.initElements(GWD.getDriver(),this);
-
+        PageFactory.initElements(GWD.getDriver(), this);
     }
+
     @FindBy(linkText = "Giriş Yap")
     public WebElement signIn;
-
     @FindBy(id = "email")
     public WebElement email;
-
     @FindBy(id = "password")
     public WebElement password;
-
     @FindBy(id = "loginButton")
     public WebElement loginButton;
-
     @FindBy(xpath = "//a[@title='Hesabım']")
     public WebElement account;
-
     @FindBy(css = "[class='errorText']")
     public List<WebElement> errorText;
+    @FindBy(css = "[title='Elektronik']")
+    public WebElement elektronik;
+    @FindBy(css = "[title='Bilgisayar']")
+    public WebElement bilgisayar;
+    @FindBy(css = "[title='Dizüstü Bilgisayar']")
+    public WebElement dizustuBilgisayar;
+    @FindBy(id = "minPrice")
+    public WebElement minPrice;
+    @FindBy(id = "maxPrice")
+    public WebElement maxPrice;
+    @FindBy(css = "[id='brand-islemci-Intel-Core-i7']+span")
+    public WebElement intelCoreI7;
+    @FindBy(css = "[data-hdfl='islemci']>h2")
+    public WebElement islemci;
+    @FindBy(css = "[data-hdfl='bellekkapasitesi']>h2")
+    public WebElement bellekKapasitesi;
+    @FindBy(css = "[id='brand-bellekkapasitesi-32-GB']+span")
+    public WebElement otuzIkiGB;
+    @FindBy(css = "[class='productName']")
+    public List<WebElement> productNames;
+    @FindBy(css = "[class='btnBasket']")
+    public List<WebElement> addToBasketButtons;
+    @FindBy(css = "[title='Sepetim']")
+    public WebElement sepet;
+    @FindBy(css = "[class='prodDescription']")
+    public List<WebElement> sepettekiUrunler;
 
+    public WebElement getWebElement(String element) {
 
+        switch (element) {
+            case "elektronik": return elektronik;
+            case "bilgisayar": return bilgisayar;
+            case "dizustuBilgisayar": return dizustuBilgisayar;
+            case "minPrice": return minPrice;
+            case "maxPrice": return maxPrice;
+            case "intelCoreI7": return intelCoreI7;
+            case "islemci": return islemci;
+            case "bellekKapasitesi": return bellekKapasitesi;
+            case "otuzIkiGB": return otuzIkiGB;
+            case "sepet": return sepet;
+
+        }
+        return null;
+    }
 }
