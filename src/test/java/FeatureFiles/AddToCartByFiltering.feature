@@ -26,6 +26,3 @@ Feature: User should be able to add item to cart by filtering categories
     Then Verify that the product is in the cart
 
 
-    And Add to cart the highest item
-    And Click on the element in dialog content
-      | sepet |
