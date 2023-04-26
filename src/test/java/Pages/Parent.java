@@ -134,6 +134,7 @@ public class Parent {
     }
 
     public void jsClickFunction(WebElement element) {
+        waitUntilClickable(element);
         js.executeScript("arguments[0].click();", element);
     }
 
