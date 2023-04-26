@@ -51,6 +51,27 @@ public class DialogContent extends Parent {
     @FindBy(css = "[class='prodDescription']")
     public List<WebElement> sepettekiUrunler;
 
+    @FindBy(css ="input[id='searchData']")
+    public WebElement inputSearch;
+
+    @FindBy(css ="[class='searchBtn']>span")
+    public WebElement searchButton;
+
+    @FindBy(css ="[title='Favorilere ekle']")
+    public List<WebElement> addToFavoriteButton;
+
+    @FindBy(css ="i[class='iconFavoritesWhite']")
+    public WebElement favoriteButton;
+
+    @FindBy(xpath = "//div[@class='pro']/a[(contains(a,@tabindex))]")
+    public List<WebElement> searchList;
+
+    @FindBy(css = "div[class='pro']>a[itemprop='url']")
+    public List<WebElement> wishList;
+
+
+
+
     public WebElement getWebElement(String element) {
 
         switch (element) {
@@ -64,6 +85,12 @@ public class DialogContent extends Parent {
             case "bellekKapasitesi": return bellekKapasitesi;
             case "otuzIkiGB": return otuzIkiGB;
             case "sepet": return sepet;
+            case "inputSearch": return inputSearch;
+            case "searchButton": return searchButton;
+            case "favoriteButton":return favoriteButton;
+
+
+
 
         }
         return null;
