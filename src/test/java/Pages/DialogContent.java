@@ -69,9 +69,14 @@ public class DialogContent extends Parent {
     @FindBy(css = "div[class='pro']>a[itemprop='url']")
     public List<WebElement> wishList;
 
+    @FindBy(xpath = "//div[@class='proDetail']/a[@class='price']")
+    public List<WebElement> allPrices;
 
+    @FindBy(css = "[title='Sepete Ekle']")
+    public WebElement sepeteEkle;
 
-
+    @FindBy (css="[class='proName']")
+    public WebElement productName;
     public WebElement getWebElement(String element) {
 
         switch (element) {
@@ -88,6 +93,7 @@ public class DialogContent extends Parent {
             case "inputSearch": return inputSearch;
             case "searchButton": return searchButton;
             case "favoriteButton":return favoriteButton;
+            case "sepeteEkle":return sepeteEkle;
 
 
 

@@ -9,6 +9,7 @@ Feature: User should be able to add items from favorite to cart
     Scenario: Select the highest product to add to cart
       When Choose and add product the highest from favorite list
       And Click on the element in dialog content
-      |sepet|
+      |sepeteEkle|
+      |sepet     |
       Then Verify that favorite product is in the cart
 
