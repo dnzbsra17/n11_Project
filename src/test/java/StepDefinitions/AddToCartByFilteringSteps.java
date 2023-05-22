@@ -29,7 +29,7 @@ public class AddToCartByFilteringSteps {
         List<String> buttons = dt.asList(String.class);
         for (String b:buttons){
             WebElement e = dc.getWebElement(b);
-            dc.clickFunction(e);
+            dc.jsClickFunction(e);
         }
     }
 
@@ -55,7 +55,7 @@ public class AddToCartByFilteringSteps {
     public void addTheProductToTheBasketRandomlyFromResultList() {
         int random = dc.randomGenerator(dc.addToBasketButtons.size());
         name = dc.productNames.get(random).getText();
-        dc.clickFunction(dc.addToBasketButtons.get(random));
+        dc.jsClickFunction(dc.addToBasketButtons.get(random));
     }
 
     @Then("Verify that the product is in the cart")
